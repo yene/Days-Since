@@ -27,8 +27,6 @@ class ViewController: UIViewController {
       let days = Int(diff / (60 * 60 * 24))
       countLabel.text = String(days)
     }
-		
-
 	}
 
 	override func didReceiveMemoryWarning() {
