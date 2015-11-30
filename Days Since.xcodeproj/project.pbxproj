@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE1236291C0CB88B004FE0D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AEC9C3E11C08C3EE00C34F4E /* Days Since.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days Since.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC9C3E41C08C3EE00C34F4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEC9C3E61C08C3EE00C34F4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		AEC9C3D81C08C3EE00C34F4E = {
 			isa = PBXGroup;
 			children = (
+				AE1236291C0CB88B004FE0D9 /* README.md */,
 				AEC9C3E31C08C3EE00C34F4E /* Days Since */,
 				AEC9C3E21C08C3EE00C34F4E /* Products */,
 			);
@@ -274,6 +276,7 @@
 				AEC9C3F21C08C3EE00C34F4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
