@@ -1,4 +1,4 @@
-// 
+//
 // ViewController.swift
 // Days Since
 // 
@@ -12,9 +12,11 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var textLabel: UILabel!
 	@IBOutlet weak var countLabel: UILabel!
-	@IBAction func resetCount(sender: AnyObject) {
+  
+  override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
     settings()
-	}
+  }
+
   
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,15 +28,17 @@ class ViewController: UIViewController {
   
   func settings() {
     let title = NSLocalizedString("Settings", comment: "")
+    let message = NSLocalizedString("Change the displayed text or reset the counter here.", comment: "")
     let resetDays = NSLocalizedString("Reset Days", comment: "")
     let cancelButtonTitle = NSLocalizedString("Cancel", comment: "")
     
-    let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
     
     alertController.addTextFieldWithConfigurationHandler { textField in
       // TODO: can the textfield have a wide input or multiple lines?
       textField.text = self.daysSinceText()
       textField.addTarget(self, action: "handleTextFieldTextDidChangeNotification:", forControlEvents: .EditingDidEnd)
+
     }
     
     let resetDaysAction = UIAlertAction(title: resetDays, style: .Default) { (button) -> Void in
@@ -43,9 +47,7 @@ class ViewController: UIViewController {
       self.countLabel.text = String(self.daysSince())
     }
 
-    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { _ in
-      // do nothing?
-    }
+    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel, handler: nil)
     alertController.addAction(resetDaysAction)
     alertController.addAction(cancelAction)
     

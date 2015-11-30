@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE12362B1C0CC4C4004FE0D9 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE12362A1C0CC4C4004FE0D9 /* CustomInputAccessoryView.swift */; };
 		AEC9C3E51C08C3EE00C34F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC9C3E41C08C3EE00C34F4E /* AppDelegate.swift */; };
 		AEC9C3E71C08C3EE00C34F4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC9C3E61C08C3EE00C34F4E /* ViewController.swift */; };
 		AEC9C3EA1C08C3EE00C34F4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC9C3E81C08C3EE00C34F4E /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 
 /* Begin PBXFileReference section */
 		AE1236291C0CB88B004FE0D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AE12362A1C0CC4C4004FE0D9 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		AEC9C3E11C08C3EE00C34F4E /* Days Since.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days Since.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC9C3E41C08C3EE00C34F4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEC9C3E61C08C3EE00C34F4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				AEC9C3E81C08C3EE00C34F4E /* Main.storyboard */,
 				AEC9C3EB1C08C3EE00C34F4E /* Assets.xcassets */,
 				AEC9C3ED1C08C3EE00C34F4E /* Info.plist */,
+				AE12362A1C0CC4C4004FE0D9 /* CustomInputAccessoryView.swift */,
 			);
 			path = "Days Since";
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			files = (
 				AEC9C3E71C08C3EE00C34F4E /* ViewController.swift in Sources */,
 				AEC9C3E51C08C3EE00C34F4E /* AppDelegate.swift in Sources */,
+				AE12362B1C0CC4C4004FE0D9 /* CustomInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
