@@ -6,3 +6,12 @@ X Days Since on your Apple TV
 * ask for new text
 * draw view yourself so it looks cooler
 * Add some red color 
+
+
+# Learned Tricks
+* `let text = textField.text ?? ""`
+
+
+# Funny scenteseses
+* Since ☕️ Machine Died.
+* 

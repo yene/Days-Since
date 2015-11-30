@@ -9,29 +9,57 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
   @IBOutlet weak var textLabel: UILabel!
 	@IBOutlet weak var countLabel: UILabel!
 	@IBAction func resetCount(sender: AnyObject) {
     settings()
 	}
+  
 	override func viewDidLoad() {
 		super.viewDidLoad()
     
-    countLabel.font = UIFont.systemFontOfSize(800)
-    
-		// Do any additional setup after loading the view, typically from a nib.
-		let defaults = NSUserDefaults.standardUserDefaults()
-    if let d = defaults.objectForKey("resetDate") {
-      let date = d as! NSDate
-      let diff = date.timeIntervalSinceNow *  -1
-      let days = Int(diff / (60 * 60 * 24))
-      countLabel.text = String(days)
-    }
-    
+    countLabel.font = UIFont.systemFontOfSize(800) // This is a fix because the max font size in the IB is 300.
+    countLabel.text = String(daysSince())
     textLabel.text = daysSinceText()
 	}
   
+  func settings() {
+    let title = NSLocalizedString("Settings", comment: "")
+    let resetDays = NSLocalizedString("Reset Days", comment: "")
+    let cancelButtonTitle = NSLocalizedString("Cancel", comment: "")
+    
+    let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+    
+    alertController.addTextFieldWithConfigurationHandler { textField in
+      // TODO: can the textfield have a wide input or multiple lines?
+      textField.text = self.daysSinceText()
+      textField.addTarget(self, action: "handleTextFieldTextDidChangeNotification:", forControlEvents: .EditingDidEnd)
+    }
+    
+    let resetDaysAction = UIAlertAction(title: resetDays, style: .Default) { (button) -> Void in
+      let defaults = NSUserDefaults.standardUserDefaults()
+      defaults.setObject(NSDate(), forKey: "resetDate")
+      self.countLabel.text = String(self.daysSince())
+    }
+
+    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { _ in
+      // do nothing?
+    }
+    alertController.addAction(resetDaysAction)
+    alertController.addAction(cancelAction)
+    
+    self.presentViewController(alertController, animated: true, completion: nil)
+  }
+  
+  func handleTextFieldTextDidChangeNotification(textField: UITextField) {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    defaults.setObject(textField.text, forKey: "labelText")
+    textLabel.text = daysSinceText()
+    dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  // MARK: - User Defaults
   func daysSinceText() -> String {
     let defaults = NSUserDefaults.standardUserDefaults()
     if let t = defaults.stringForKey("labelText") {
@@ -40,39 +68,16 @@ class ViewController: UIViewController {
       return NSLocalizedString("Days since someone pushed a broken build.", comment: "")
     }
   }
-
-  func settings() {
-    let title = NSLocalizedString("Settings", comment: "")
-    let resetDays = NSLocalizedString("Reset Days", comment: "")
-    let changeText = NSLocalizedString("Change Text", comment: "")
-    let cancelButtonTitle = NSLocalizedString("Cancel", comment: "")
-    
-    let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
-    
-    alertController.addTextFieldWithConfigurationHandler { textField in
-      textField.text = self.daysSinceText()
-    }
-    
-    let resetDaysAction = UIAlertAction(title: resetDays, style: .Default) { (button) -> Void in
-      let defaults = NSUserDefaults.standardUserDefaults()
-      defaults.setObject(NSDate(), forKey: "resetDate")
-    }
-    let changeTextAction = UIAlertAction(title: changeText, style: .Default) { (button) -> Void in
-      // ask for new text
-    }
-    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { _ in
-      // do nothing?
-    }
-    alertController.addAction(resetDaysAction)
-    //alertController.addAction(changeTextAction)
-    alertController.addAction(cancelAction)
-    
-    self.presentViewController(alertController, animated: true, completion: nil)
-  }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  func daysSince() -> Int {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if let d = defaults.objectForKey("resetDate") {
+      let date = d as! NSDate
+      let diff = date.timeIntervalSinceNow *  -1
+      return Int(diff / (60 * 60 * 24))
+    } else {
+      return 0
+    }
   }
 }
 
